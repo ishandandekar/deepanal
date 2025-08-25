@@ -1,0 +1,11 @@
+[project]
+name = "deepanal"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "catppuccin[rich]>=2.5.0",
+    "langgraph>=0.6.6",
+    "rich>=14.1.0",
+]
