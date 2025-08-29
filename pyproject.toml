@@ -8,4 +8,5 @@ dependencies = [
     "catppuccin[rich]>=2.5.0",
     "langgraph>=0.6.6",
     "rich>=14.1.0",
+    "tavily-python>=0.7.11",
 ]
