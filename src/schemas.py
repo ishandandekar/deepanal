@@ -1,5 +1,5 @@
 from typing import Annotated, Any, TypedDict
-from langchain_core.language_models import LLM
+from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import AnyMessage
 from logging import Logger
 from tavily import TavilyClient
@@ -11,7 +11,7 @@ class DeepAnalState(TypedDict):
     location: str
     industry: str
     company_url: str | None
-    llm: LLM
+    llm: BaseChatModel
     tavily_client: TavilyClient
     logger: Logger
     foo_analyst_message: dict[str, Any]
