@@ -9,5 +9,5 @@ from src.researchers import (
 )
 from src.processors import grounding, collector, curator, breifer, editor
 
-graph = StateGraph(DeepAnalState)
+workflow = StateGraph(DeepAnalState)
 
