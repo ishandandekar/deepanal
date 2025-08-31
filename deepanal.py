@@ -45,7 +45,7 @@ def main():
         cns.print(msg)
         sys.exit(1)
 
-    formatter = "%(asctime)s | %(name)s | %(lineno)d | %(message)s"
+    formatter = "%(asctime)s | %(filename)s | %(lineno)d | %(message)s"
     logging.basicConfig(
         level="NOTSET",  # Set the desired logging level
         format=formatter,
