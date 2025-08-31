@@ -26,7 +26,7 @@ def main():
     )
     parser.add_argument("-c", "--company", type=str, required=True)
     parser.add_argument("-i", "--industry", type=str, required=True)
-    parser.add_argument("-u", "--url", type=str, required=True)
+    parser.add_argument("-u", "--company_url", type=str, required=True)
     parser.add_argument("-l", "--location", type=str, required=True)
 
     cns = Console(theme=mocha, log_time=True)
@@ -35,7 +35,6 @@ def main():
     args = parser.parse_args()
     user_request = vars(args)
 
-    # TODO: Check if API keys are enabled, even check Ollama is installed in path or not
     if "GOOGLE_API_KEY" not in os.environ:
         msg = "No GOOGLE_API_KEY found. Please setup the environment variable"
         cns.print(msg)
@@ -45,8 +44,8 @@ def main():
         msg = "No TAVILY_API_KEY found. Please setup the environment variable"
         cns.print(msg)
         sys.exit(1)
-    formatter = "%(asctime)s | %(name)s | %(lineno)d | %(message)s"
 
+    formatter = "%(asctime)s | %(name)s | %(lineno)d | %(message)s"
     logging.basicConfig(
         level="NOTSET",  # Set the desired logging level
         format=formatter,
@@ -59,8 +58,20 @@ def main():
         ],
     )
 
+    httpx_logger = logging.getLogger("httpx")
+    httpx_logger.setLevel(logging.WARNING)
+    httpx_logger = logging.getLogger("httpcore")
+    httpx_logger.setLevel(logging.WARNING)
+    httpx_logger = logging.getLogger("asyncio")
+    httpx_logger.setLevel(logging.WARNING)
+
     log = logging.getLogger("deepanal")
     log.info("User research request: " + str(user_request))
+    log.info("Initiating DeepAnal research for: " + user_request["company"])
+    graph_inputs = {"console": cns, "logger": log}
+    graph_inputs.update(user_request)
+    log.info("Graph inputs: " + str(graph_inputs))
+    workflow.invoke(graph_inputs)
 
 
 if __name__ == "__main__":

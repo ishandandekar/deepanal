@@ -1,4 +1,5 @@
 from langgraph.graph import StateGraph
+from langgraph.graph.state import CompiledStateGraph
 from src.schemas import DeepAnalState
 from src.researchers import (
     financial_analyst,
@@ -9,7 +10,7 @@ from src.researchers import (
 )
 from src.processors import grounding, collector, curator, briefer, editor
 
-workflow = (
+workflow: CompiledStateGraph = (
     StateGraph(DeepAnalState)
     # Add processors
     .add_node("grounding", grounding)
@@ -40,4 +41,3 @@ workflow = (
     .set_finish_point("editor")
     .compile()
 )
-# workflow.get_graph().draw_mermaid_png(output_file_path="DeepAnal_graph.png")
