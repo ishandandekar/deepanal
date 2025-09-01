@@ -19,10 +19,10 @@ class DeepAnalState(TypedDict):
     tavily_client: TavilyClient
     logger: Logger
     company_analyst_node_result: dict[str, Any]
-    financial_analyst_output: dict[str, Any]
-    news_analyst_output: dict[str, Any]
-    risk_analyst_output: dict[str, Any]
-    industry_analyst_output: dict[str, Any]
+    financial_analyst_node_result: dict[str, Any]
+    news_analyst_node_result: dict[str, Any]
+    controversy_analyst_node_result: dict[str, Any]
+    industry_analyst_node_result: dict[str, Any]
     messages: Annotated[list[AnyMessage], add_messages]
     console: Console
     llm_usage_callback: UsageMetadataCallbackHandler

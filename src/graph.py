@@ -6,16 +6,15 @@ from src.researchers import (
     news_analyst,
     company_analyst,
     industry_analyst,
-    risk_analyst,
+    controversy_analyst,
 )
-from src.processors import grounding, collector, curator, briefer, editor
+from src.processors import grounding, relevance_evaluator, briefer, editor
 
 workflow: CompiledStateGraph = (
     StateGraph(DeepAnalState)
     # Add processors
     .add_node("grounding", grounding)
-    .add_node("collector", collector)
-    .add_node("curator", curator)
+    .add_node("curator", relevance_evaluator)
     .add_node("briefer", briefer)
     .add_node("editor", editor)
     # Add researchers
@@ -23,20 +22,20 @@ workflow: CompiledStateGraph = (
     .add_node("news_analyst", news_analyst)
     .add_node("company_analyst", company_analyst)
     .add_node("industry_analyst", industry_analyst)
-    .add_node("risk_analyst", risk_analyst)
+    .add_node("controversy_analyst", controversy_analyst)
     # Setting up edges
     .set_entry_point("grounding")
     .add_edge("grounding", "financial_analyst")
     .add_edge("grounding", "news_analyst")
     .add_edge("grounding", "company_analyst")
     .add_edge("grounding", "industry_analyst")
-    .add_edge("grounding", "risk_analyst")
-    .add_edge("financial_analyst", "collector")
-    .add_edge("news_analyst", "collector")
-    .add_edge("company_analyst", "collector")
-    .add_edge("industry_analyst", "collector")
-    .add_edge("risk_analyst", "collector")
-    .add_edge("collector", "curator")
+    .add_edge("grounding", "controversy_analyst")
+    .add_edge("financial_analyst", "curator")
+    .add_edge("news_analyst", "curator")
+    .add_edge("company_analyst", "curator")
+    .add_edge("industry_analyst", "curator")
+    .add_edge("controversy_analyst", "curator")
+    .add_edge("curator", "briefer")
     .add_edge("briefer", "editor")
     .set_finish_point("editor")
     .compile()

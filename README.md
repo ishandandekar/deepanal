@@ -5,7 +5,7 @@ Any help is appreciated, you can see the TODOs below, just pick anything. There 
 
 TODOs:
 - [ ] Output should be in markdown, do not print the entire report in terminal
-- [ ] Extensive logging using logger, don't use print statements
+- [x] Extensive logging using logger, don't use print statements
 - [x] Agent State should have fields like these
       ```python
       class DeepAnalState(TypedDict):
@@ -19,17 +19,17 @@ TODOs:
         foo_analyst_message: dict
       ```
 - [x] `.envrc` to store keys
-- [ ] As an extension, make a _risk_analyst_, for regulatory and legal risk, reputation, ESG risk, operational
+- [x] As an extension, make a _risk_analyst_, for regulatory and legal risk, reputation, ESG risk, operational
 - [ ] KISS
 - [ ] Have a clear balance between feature and fancy
 - [x] Don't be afraid to use Gemini, as a fallback have Ollama
 - [ ] There should be statistics post usage, such as time taken, token usage, URLs searched
-- [ ] Use LangGraph more for graph based usage and not as such for LLM stuff, I mean they've already designed it that way
+- [x] Use LangGraph more for graph based usage and not as such for LLM stuff, I mean they've already designed it that way
 - [x] Usage should only be via CLI args, no "task file"s. No `thread-id` idgaf if you get an error
 - [x] Usage will only support one company at a time
 - [ ] Be super-verbose, log everything
-- [ ] Don't use `pandas` or anything tabular data library, use simple data-models
-- [ ] Functions over classes, keep each node as function and have a try-except within it 
-- [ ] Researcher nodes are repetative and the only thing that changes is the prompt, rest stays the same actually. Going to build this 
-- [ ] Remove progress bar for the fetching task from tavily function
-- [ ] Review researcher prompts, enrich more if needed
+- [x] Don't use `pandas` or anything tabular data library, use simple data-models
+- [x] Functions over classes, keep each node as function and have a try-except within it 
+- [x] Researcher nodes are repetative and the only thing that changes is the prompt, rest stays the same actually. Going to build this 
+- [x] Remove progress bar for the fetching task from tavily function
+- [x] Review researcher prompts, enrich more if needed
