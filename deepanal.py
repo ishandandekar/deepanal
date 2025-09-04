@@ -26,7 +26,6 @@ def main():
     )
     parser.add_argument("-c", "--company", type=str, required=True)
     parser.add_argument("-i", "--industry", type=str, required=True)
-    parser.add_argument("-u", "--company_url", type=str, required=True)
     parser.add_argument("-l", "--location", type=str, required=True)
 
     cns = Console(theme=mocha, log_time=True)
@@ -71,7 +70,9 @@ def main():
     graph_inputs = {"console": cns, "logger": log}
     graph_inputs.update(user_request)
     log.info("Graph inputs: " + str(graph_inputs))
-    workflow.invoke(graph_inputs)
+    final_state = workflow.invoke(graph_inputs)
+    cns.print("final state: \n" + str(final_state.keys()))
+    cns.print(workflow.get_graph().draw_ascii())
 
 
 if __name__ == "__main__":

@@ -14,7 +14,6 @@ class DeepAnalState(TypedDict):
     company: str
     location: str
     industry: str
-    company_url: str
     llm: BaseChatModel
     tavily_client: TavilyClient
     logger: Logger
@@ -27,7 +26,6 @@ class DeepAnalState(TypedDict):
     console: Console
     llm_usage_callback: UsageMetadataCallbackHandler
     query_generator_llm: BaseChatModel
-    site_scrape: str
 
 
 class SearchQueries(BaseModel):

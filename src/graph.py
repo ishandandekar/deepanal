@@ -40,3 +40,4 @@ workflow: CompiledStateGraph = (
     .set_finish_point("editor")
     .compile()
 )
+workflow.name = "DeepAnal"
