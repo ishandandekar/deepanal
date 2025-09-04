@@ -71,8 +71,25 @@ def main():
     graph_inputs.update(user_request)
     log.info("Graph inputs: " + str(graph_inputs))
     final_state = workflow.invoke(graph_inputs)
-    cns.print("final state: \n" + str(final_state.keys()))
-    cns.print(workflow.get_graph().draw_ascii())
+    usage_hook = final_state["llm_usage_callback"].usage_metadata
+    total_tokens = 0
+    input_tokens = 0
+    output_tokens = 0
+    for model_name, usage_schema in usage_hook.items():
+        total_tokens += usage_schema["total_tokens"]
+        input_tokens += usage_schema["input_tokens"]
+        output_tokens += usage_schema["output_tokens"]
+    cns.print(
+        "Token statistics:\n"
+        + "Total tokens: "
+        + str(total_tokens)
+        + "\n"
+        + "Input tokens: "
+        + str(input_tokens)
+        + "\n"
+        + "Output tokends: "
+        + str(output_tokens)
+    )
 
 
 if __name__ == "__main__":

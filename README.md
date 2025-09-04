@@ -1,35 +1,11 @@
+# DeepAnal
 **DeepAnal** is AI-powered company research tool. "Tool" because the idea is to help you in work, but not do all of it.  
-I know there are a lot of things like DeepAnal in the market, but this is my attempt to learn AI-agents thoroughly, nothing special this is a purely a learning project  
-Very nascent stage. Like there's literally no code.  
-Any help is appreciated, you can see the TODOs below, just pick anything. There will be TODOs scattered around in the code files as well, please have a look through and contribute
+It does analysis for company fundamentals, its place in the industry, its finances, recent news and also a controversy-risk analysis.  
+I know there are a lot of things like DeepAnal in the market, but this is my attempt to learn AI-agents thoroughly, nothing special, this is a purely a learning project  
 
-TODOs:
-- [ ] Output should be in markdown, do not print the entire report in terminal
-- [x] Extensive logging using logger, don't use print statements
-- [x] Agent State should have fields like these
-      ```python
-      class DeepAnalState(TypedDict):
-        company_name:str
-        location:str
-        industry:str
-        company_url: Optional[str]
-        llm: LangChainLLM
-        tavily_client: TavilyClient
-        logger: Logger
-        foo_analyst_message: dict
-      ```
-- [x] `.envrc` to store keys
-- [x] As an extension, make a _risk_analyst_, for regulatory and legal risk, reputation, ESG risk, operational
-- [ ] KISS
-- [ ] Have a clear balance between feature and fancy
-- [x] Don't be afraid to use Gemini, as a fallback have Ollama
-- [ ] There should be statistics post usage, such as time taken, token usage, URLs searched
-- [x] Use LangGraph more for graph based usage and not as such for LLM stuff, I mean they've already designed it that way
-- [x] Usage should only be via CLI args, no "task file"s. No `thread-id` idgaf if you get an error
-- [x] Usage will only support one company at a time
-- [ ] Be super-verbose, log everything
-- [x] Don't use `pandas` or anything tabular data library, use simple data-models
-- [x] Functions over classes, keep each node as function and have a try-except within it 
-- [x] Researcher nodes are repetative and the only thing that changes is the prompt, rest stays the same actually. Going to build this 
-- [x] Remove progress bar for the fetching task from tavily function
-- [x] Review researcher prompts, enrich more if needed
+### Working
+**DeepAnal** employs [Tavily](https://www.tavily.com/) to run search queries for each vertical of a company. Based on these documents, collates the information and then presents it in a nicely formatted report.  
+
+### Motivation
+I saw [Company Research](https://companyresearcher.tavily.com/), and thought it's a very simple and easy to use tool to get you so much information about a company, where you go 0 to 100, in very minimal effort. Gave myself a challenge to go through the source code and recreate it.  
+Also, yeah I mean I was itching to use LangGraph
