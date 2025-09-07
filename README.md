@@ -9,3 +9,20 @@ I know there are a lot of things like DeepAnal in the market, but this is my att
 ### Motivation
 I saw [Company Research](https://companyresearcher.tavily.com/), and thought it's a very simple and easy to use tool to get you so much information about a company, where you go 0 to 100, in very minimal effort. Gave myself a challenge to go through the source code and recreate it.  
 Also, yeah I mean I was itching to use LangGraph
+
+### Usage
+```bash
+
+❯ uv run ./deepanal.py \
+-c "Marsh McLennan" \
+-l "United States of America" \
+-i "Risk consulting and insurance brokerage"
+
+██████╗ ███████╗███████╗██████╗  █████╗ ███╗   ██╗ █████╗ ██╗
+██╔══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗████╗  ██║██╔══██╗██║
+██║  ██║█████╗  █████╗  ██████╔╝███████║██╔██╗ ██║███████║██║
+██║  ██║██╔══╝  ██╔══╝  ██╔═══╝ ██╔══██║██║╚██╗██║██╔══██║██║
+██████╔╝███████╗███████╗██║     ██║  ██║██║ ╚████║██║  ██║███████╗
+╚═════╝ ╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
+```
+```
