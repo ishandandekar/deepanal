@@ -87,7 +87,7 @@ def main():
         + "Input tokens: "
         + str(input_tokens)
         + "\n"
-        + "Output tokends: "
+        + "Output tokens: "
         + str(output_tokens)
     )
 
